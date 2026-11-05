@@ -1,22 +1,30 @@
 # Employee Management UI
 
-A standalone React frontend for managing employees, inspired by the Meepl HRMS Employee page. It uses only React state: no backend, database or API.
+A simple Employee Management page built with React, inspired by the Meepl HRMS employee screen. I made it as my first internship task at Meepl. It is a standalone frontend project, so there is no backend, database or API. All the employee data is stored in React state, which means it resets when the page is refreshed.
 
-## Features
-- View employees in a table (ID, Name, Email, Department, Actions)
-- Search by name (case-insensitive) with a clear "No employees found" message
-- Add employee with validation (required fields, email format, 10-digit phone, DOB not in the future)
-- Edit employee using the same reusable form
-- Delete employee with a confirmation dialog
-- Success messages after add, update and delete
-- Responsive layout for desktop, tablet and mobile
+## What it does
 
-## Technologies Used
-React 18 (functional components, `useState`, props), JavaScript, HTML, CSS, Vite, Git and GitHub
+- Shows a list of employees with their ID, name, email and department
+- Search employees by name 
+- Shows a "No employees found" message when nothing matches
+- Add a new employee using a form with name, email, phone number, date of birth and department
+- Checks the form before saving: all fields are required, the email must be valid and the phone number must be a 10-digit mobile number
+- Edit an existing employee using the same form
+- Delete an employee after a confirmation popup
+- Shows a success message after adding, updating or deleting
 
-## Folder Structure
-```
-employee-management-ui/
+## Technologies used
+
+- React.js (functional components, `useState` hook, props)
+- JavaScript
+- HTML
+- CSS
+- Vite
+- Git and GitHub
+
+## Folder structure
+
+-employee_management_uI/
 ├── index.html
 ├── package.json
 ├── vite.config.js
@@ -32,27 +40,43 @@ employee-management-ui/
         ├── EmployeeTable.jsx
         ├── EmployeeForm.jsx
         └── EmployeeModal.jsx
-```
 
-## Installation
-```bash
-git clone <your-repo-url>
-cd employee-management-ui
-git checkout feature/employee-management-ui
-npm install
-```
 
-## Run the Application
-```bash
-npm run dev       # development server (http://localhost:5173)
-npm run build     # production build
-npm run preview   # preview the production build
+## How to set it up
+
+1. Clone the repository
+   ```
+   git clone https://github.com/JaniseYP/-employee_management_uI
+   ```
+2. Go into the project folder
+   ```
+   cd -employee_management_uI
+   ```
+3. Switch to the working branch
+   ```
+   git checkout feature/-employee_management_uI
+   ```
+4. Install the packages
+   ```
+   npm install
+   ```
+
+## How to run it
+
+Start the development server:
 ```
+npm run dev
+```
+Then open the link shown in the terminal (usually http://localhost:5173).
+
 
 ## Screenshots
-_Add screenshots here (for example `docs/employee-list.png`, `docs/add-employee.png`)._
 
-## Git Branches
-- `main`: stable code
-- `develop`: development code
-- `feature/employee-management-ui`: working branch for this task
+![Employee list](<Screenshot 2026-11-05 101423.png>)
+![Add Employee form](<Screenshot 2026-11-05 101435.png>)
+
+## Git branches
+
+- `main` - stable code
+- `develop` - development code
+- `feature/-employee_management_uI` - the branch I worked on for this task
