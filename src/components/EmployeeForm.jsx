@@ -1,10 +1,11 @@
 import { useState } from "react";
 
 const emptyForm = { name: "", email: "", phone: "", dob: "", department: "" };
-
+const minDob = "1950-01-01";
 function EmployeeForm({ employee, onSubmit, onCancel }) {
   const [formData, setFormData] = useState(employee || emptyForm);
   const [errors, setErrors] = useState({});
+  const maxDob = new Date().toLocaleDateString("en-CA");
 
   function handleChange(e) {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -96,12 +97,14 @@ function EmployeeForm({ employee, onSubmit, onCancel }) {
       <div className="field">
         <label>Date of Birth</label>
         <input
-          type="date"
-          name="dob"
-          value={formData.dob}
-          onChange={handleChange}
-          className={errors.dob ? "has-error" : ""}
-        />
+  type="date"
+  name="dob"
+  min={minDob}
+  max={maxDob}
+  value={formData.dob}
+  onChange={handleChange}
+  className={errors.dob ? "has-error" : ""}
+/>
         {errors.dob && <p className="error-text">{errors.dob}</p>}
       </div>
 
