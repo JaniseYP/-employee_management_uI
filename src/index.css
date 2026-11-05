@@ -1,0 +1,19 @@
+:root {
+  --purple: #7c3aed;
+  --purple-dark: #6d28d9;
+  --lavender: #f3eefe;
+  --lavender-border: #e4d9fb;
+  --text: #1f1b2e;
+  --muted: #6b6580;
+  --danger: #dc2626;
+  --white: #ffffff;
+}
+* { box-sizing: border-box; margin: 0; }
+body {
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--lavender);
+  color: var(--text);
+  line-height: 1.5;
+}
+button, input, select { font: inherit; }
+:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
