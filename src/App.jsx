@@ -1,23 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import SearchBar from "./components/SearchBar";
 import EmployeeTable from "./components/EmployeeTable";
 import EmployeeForm from "./components/EmployeeForm";
 import EmployeeModal from "./components/EmployeeModal";
 
-const startingEmployees = [
-  { id: "EMP001", name: "Rahul", email: "rahul@gmail.com", phone: "9876543210", dob: "1995-04-12", department: "IT" },
-  { id: "EMP002", name: "Priya", email: "priya@gmail.com", phone: "9123456780", dob: "1997-08-23", department: "HR" },
-  { id: "EMP003", name: "Amit", email: "amit@gmail.com", phone: "9988776655", dob: "1993-01-30", department: "Finance" },
-];
+const API_URL = "http://localhost:5000/api/employees";
 
 function App() {
-  const [employees, setEmployees] = useState(startingEmployees);
+  const [employees, setEmployees] = useState([]);
   const [searchText, setSearchText] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [editingEmployee, setEditingEmployee] = useState(null);
   const [deletingEmployee, setDeletingEmployee] = useState(null);
   const [message, setMessage] = useState("");
+
+  useEffect(() => {
+  async function loadEmployees() {
+    try {
+      const response = await fetch(API_URL);
+      const data = await response.json();
+      setEmployees(data);
+    } catch (error) {
+      showMessage("Could not load employees. Is the backend running?");
+    }
+  }
+  loadEmployees();
+}, []);
 
   function showMessage(text) {
     setMessage(text);
@@ -48,27 +57,50 @@ function App() {
     setEditingEmployee(null);
   }
 
-  function handleSave(formData) {
+  async function handleSave(formData) {
+  try {
     if (editingEmployee) {
-      const updatedList = employees.map((emp) =>
-        emp.id === editingEmployee.id ? { ...emp, ...formData } : emp
+      const response = await fetch(`${API_URL}/${editingEmployee.id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) throw new Error("Request failed");
+      const updatedEmployee = await response.json();
+      setEmployees(
+        employees.map((emp) => (emp.id === updatedEmployee.id ? updatedEmployee : emp))
       );
-      setEmployees(updatedList);
       showMessage("Employee updated successfully.");
     } else {
-      const newEmployee = { id: getNextId(), ...formData };
+      const response = await fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) throw new Error("Request failed");
+      const newEmployee = await response.json();
       setEmployees([...employees, newEmployee]);
       showMessage("Employee added successfully.");
     }
     closeForm();
+  } catch (error) {
+    showMessage("Something went wrong. Please try again.");
   }
+}
 
-  function handleDelete() {
-    const updatedList = employees.filter((emp) => emp.id !== deletingEmployee.id);
-    setEmployees(updatedList);
+  async function handleDelete() {
+  try {
+    const response = await fetch(`${API_URL}/${deletingEmployee.id}`, {
+      method: "DELETE",
+    });
+    if (!response.ok) throw new Error("Request failed");
+    setEmployees(employees.filter((emp) => emp.id !== deletingEmployee.id));
     setDeletingEmployee(null);
     showMessage("Employee deleted successfully.");
+  } catch (error) {
+    showMessage("Something went wrong. Please try again.");
   }
+}
 
   const filteredEmployees = employees.filter((emp) =>
     emp.name.toLowerCase().includes(searchText.trim().toLowerCase())
