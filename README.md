@@ -79,4 +79,4 @@ Then open the link shown in the terminal (usually http://localhost:5173).
 
 - `main` - stable code
 - `develop` - development code
-- `feature/-employee_management_uI` - the branch I worked on for this task.
+- `feature/-employee_management_uI` - the branch I worked on for this task
