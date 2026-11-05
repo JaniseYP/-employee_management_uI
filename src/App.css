@@ -1,0 +1,59 @@
+.app { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+.card { background: var(--white); border: 1px solid var(--lavender-border); border-radius: 14px; overflow: hidden; }
+.page-header { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 20px 24px; border-bottom: 1px solid var(--lavender-border); }
+.page-header h1 { font-size: 1.4rem; font-weight: 700; }
+.toolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 24px; background: var(--lavender); }
+.count { color: var(--muted); font-size: 0.85rem; }
+
+.search-bar { display: flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--lavender-border); border-radius: 999px; padding: 8px 14px; width: 100%; max-width: 360px; color: var(--muted); }
+.search-bar:focus-within { border-color: var(--purple); }
+.search-bar input { border: 0; outline: 0; width: 100%; color: var(--text); background: transparent; }
+
+.btn { display: inline-flex; align-items: center; gap: 6px; border: 1px solid transparent; border-radius: 8px; padding: 9px 16px; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+.btn-primary { background: var(--purple); color: var(--white); }
+.btn-primary:hover { background: var(--purple-dark); }
+.btn-secondary { background: var(--white); border-color: var(--lavender-border); color: var(--text); }
+.btn-secondary:hover { background: var(--lavender); }
+.btn-ghost { background: transparent; color: var(--purple); padding: 6px 12px; }
+.btn-ghost:hover { background: var(--lavender); }
+.btn-danger-ghost { background: transparent; color: var(--danger); padding: 6px 12px; }
+.btn-danger-ghost:hover { background: #fef2f2; }
+.btn-danger { background: var(--danger); color: var(--white); }
+
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 14px 24px; }
+th { font-size: 0.85rem; color: var(--muted); font-weight: 600; border-bottom: 1px solid var(--lavender-border); white-space: nowrap; }
+td { border-bottom: 1px solid var(--lavender); }
+tbody tr:hover { background: #faf7ff; }
+.actions-col { text-align: right; white-space: nowrap; }
+.dept-pill { background: var(--lavender); color: var(--purple-dark); padding: 3px 10px; border-radius: 999px; font-size: 0.85rem; font-weight: 500; }
+.empty-state { text-align: center; padding: 56px 24px; color: var(--muted); }
+.empty-title { color: var(--text); font-weight: 600; font-size: 1.05rem; }
+
+.modal-backdrop { position: fixed; inset: 0; background: rgba(31, 27, 46, 0.5); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 10; }
+.modal { background: var(--white); border-radius: 14px; padding: 24px; width: 100%; max-width: 440px; max-height: 92vh; overflow-y: auto; }
+.modal h2 { font-size: 1.2rem; margin-bottom: 16px; }
+.confirm-text { color: var(--muted); margin-bottom: 20px; }
+.field { margin-bottom: 14px; }
+.field label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 4px; }
+.field input, .field select { width: 100%; padding: 9px 12px; border: 1px solid var(--lavender-border); border-radius: 8px; background: var(--white); }
+.field input:focus, .field select:focus { border-color: var(--purple); outline: 0; }
+.field .has-error { border-color: var(--danger); }
+.error-text { color: var(--danger); font-size: 0.8rem; margin-top: 4px; }
+.form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+.toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: var(--text); color: var(--white); padding: 12px 20px; border-radius: 10px; font-weight: 500; z-index: 20; }
+
+@media (max-width: 720px) {
+  .app { padding: 12px; }
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .search-bar { max-width: none; }
+  thead { display: none; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  tr { padding: 12px 16px; border-bottom: 1px solid var(--lavender-border); }
+  td { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; border: 0; text-align: right; }
+  td::before { content: attr(data-label); color: var(--muted); font-weight: 600; font-size: 0.85rem; text-align: left; }
+  td.actions-col { justify-content: flex-end; }
+  td.actions-col::before { display: none; }
+}
