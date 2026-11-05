@@ -1,0 +1,34 @@
+[
+  {
+    "id": "EMP001",
+    "name": "Rahul",
+    "email": "rahul@gmail.com",
+    "phone": "9876543210",
+    "dob": "1995-04-12",
+    "department": "IT"
+  },
+  {
+    "id": "EMP002",
+    "name": "Priya",
+    "email": "priya@gmail.com",
+    "phone": "9123456780",
+    "dob": "1997-08-23",
+    "department": "HR"
+  },
+  {
+    "id": "EMP003",
+    "name": "Amit",
+    "email": "amit@gmail.com",
+    "phone": "9988776655",
+    "dob": "1993-01-30",
+    "department": "Finance"
+  },
+  {
+    "id": "EMP004",
+    "name": "a",
+    "email": "annanya101105@gmail.com",
+    "phone": "8438251011",
+    "dob": "1874-05-06",
+    "department": "HR"
+  }
+]
