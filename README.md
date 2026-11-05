@@ -5,7 +5,7 @@ A simple Employee Management page built with React, inspired by the Meepl HRMS e
 ## What it does
 
 - Shows a list of employees with their ID, name, email and department
-- Search employees by name 
+- Search employees by name
 - Shows a "No employees found" message when nothing matches
 - Add a new employee using a form with name, email, phone number, date of birth and department
 - Checks the form before saving: all fields are required, the email must be valid and the phone number must be a 10-digit mobile number
@@ -30,17 +30,16 @@ A simple Employee Management page built with React, inspired by the Meepl HRMS e
 ├── vite.config.js
 ├── README.md
 └── src/
-    ├── main.jsx
-    ├── App.jsx
-    ├── App.css
-    ├── index.css
-    └── components/
-        ├── Header.jsx
-        ├── SearchBar.jsx
-        ├── EmployeeTable.jsx
-        ├── EmployeeForm.jsx
-        └── EmployeeModal.jsx
-
+├── main.jsx
+├── App.jsx
+├── App.css
+├── index.css
+└── components/
+├── Header.jsx
+├── SearchBar.jsx
+├── EmployeeTable.jsx
+├── EmployeeForm.jsx
+└── EmployeeModal.jsx
 
 ## How to set it up
 
@@ -64,19 +63,20 @@ A simple Employee Management page built with React, inspired by the Meepl HRMS e
 ## How to run it
 
 Start the development server:
+
 ```
 npm run dev
 ```
-Then open the link shown in the terminal (usually http://localhost:5173).
 
+Then open the link shown in the terminal (usually http://localhost:5173).
 
 ## Screenshots
 
-![Employee list](<Screenshot 2026-11-05 101423.png>)
-![Add Employee form](<Screenshot 2026-11-05 101435.png>)
+![Employee list](docs/employee-list.png)
+![Add employee form](docs/add-employee.png)
 
 ## Git branches
 
 - `main` - stable code
 - `develop` - development code
-- `feature/-employee_management_uI` - the branch I worked on for this task
+- `feature/-employee_management_uI` - the branch I worked on for this task.
