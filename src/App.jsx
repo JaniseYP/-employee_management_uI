@@ -5,7 +5,7 @@ import EmployeeTable from "./components/EmployeeTable";
 import EmployeeForm from "./components/EmployeeForm";
 import EmployeeModal from "./components/EmployeeModal";
 
-const API_URL = "http://localhost:5000/api/employees";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api/employees"; 
 
 function App() {
   const [employees, setEmployees] = useState([]);

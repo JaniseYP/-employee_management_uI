@@ -1,7 +1,15 @@
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 
-const dataFile = path.join(__dirname, "..", "data", "employees.json");
+const sourceFile = path.join(__dirname, "..", "data", "employees.json");
+const dataFile = process.env.VERCEL
+  ? path.join(os.tmpdir(), "employees.json")
+  : sourceFile;
+
+if (process.env.VERCEL && !fs.existsSync(dataFile)) {
+  fs.copyFileSync(sourceFile, dataFile);
+}
 
 function readEmployees() {
   const fileText = fs.readFileSync(dataFile, "utf-8");
